@@ -1,0 +1,14 @@
+version: "3.8"
+networks:
+  default:
+    external:
+      name: app-network
+services:
+  migrate:
+    container_name: app-migrate
+    networks:
+      - default
+    image: registry.gitlab.com/omi4571821/app-example:0.1.3-alpha
+    env_file:
+      - app.env
+    command: python manage.py migrate
